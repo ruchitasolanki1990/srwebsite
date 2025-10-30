@@ -1,0 +1,83 @@
+:root{
+  --primary-color:#e97c1f;
+  --secondary-color:white;
+  --primary-font:'Merriweather';
+}
+
+.bg-primary_color {
+  background-color: var(--primary-color) !important;
+}
+.bg-secondary_color{
+  background-color: var(--secondary-color) !important;
+}
+.bg-third_color{
+  background-color: var(--third-color) !important;
+}
+.text-primary_color {
+  color: var(--primary-color) !important;
+}
+.text-secondary_color {
+  color: var(--secondary-color) !important;
+}
+.text-primary_font{
+  font-family: var(--primary-font), serif !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+@media (max-width: 576px) {
+  .mobile-text {
+    font-size: 12px;
+  }
+}
+.icon-hover {
+  color: grey;                /* default color */
+  transition: color 0.3s ease-in-out;
+}
+
+.icon-hover:hover {
+  color:#e97c1f; /* Color on hover */
+  transform: scale(1.2); /* Example: Scale up on hover */
+}
+.text-j{
+  text-align: justify;
+}
+.imgbackground{
+  background-image: url('../public/images/slider/slide1.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      
+}
+.imgposition{
+  width: 400px;
+  height: 250px;
+}
+.imgposition2{
+ width: 350px;
+  height: 200px; 
+}
+.imgAboutCss{
+  border-radius: 10px;
+  width: 1200px;
+  height: 400px;
+}
+.mapCss{
+  height: 400px;
+}
+.productDivCss{
+  height: 200px;
+  width: 200px;
+}
+.productDivCss:hover{
+  transform: scale(1.1);
+}
+.productImgCss{
+  height: 150px;
+  width: 150px;
+}
+
+
+
+
+
