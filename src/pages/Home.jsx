@@ -16,7 +16,7 @@ const [homedetetail, sethomedetetail] = useState([]);
     axios
       .get(`${process.env.REACT_APP_API_URL}/${GET_HOME_DETAILS}`)
       .then((res) => {
-      sethomedetetail(res.data); // ✅ Save data into state
+      sethomedetetail(res.data); //  Save data into state
       })
       .catch((err) => console.error("Error:", err));
   }, []);

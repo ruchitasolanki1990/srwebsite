@@ -15,7 +15,7 @@ const About = () => {
                 .get(`${process.env.REACT_APP_API_URL}/${GET_ABOUT_DETAILS}`)
                 .then((res) => {
                 //console.log("Fetched data:", data);
-            setaboutdetail(res.data); // ✅ Save data into state
+            setaboutdetail(res.data); //  Save data into state
             })
             .catch((err) => console.error("Error:", err));
         }, []);

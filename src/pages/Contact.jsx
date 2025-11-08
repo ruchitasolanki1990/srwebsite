@@ -1,5 +1,4 @@
 import React from "react"
-import { useNavigate } from "react-router-dom"
 import Header from "../components/HeaderComponent/Header";
 import Footer from "../components/FooterComponent/Footer";
 import { MapPin, Phone, Mail } from "lucide-react";
@@ -32,7 +31,7 @@ const [contactdetail, setcontactdetail] = useState([]);
     axios
       .get(`${process.env.REACT_APP_API_URL}/${GET_CONTACT_DETAILS}`)
       .then((res) => {
-        setcontactdetail(res.data); // ✅ Save data into state
+        setcontactdetail(res.data); //  Save data into state
       })
       .catch((err) => console.error("Error:", err));
   }, []);
