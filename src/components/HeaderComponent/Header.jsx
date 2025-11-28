@@ -9,9 +9,6 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import About from "../../pages/About";
-import Contact from "../../pages/Contact";
-import Home from "../../pages/Home";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
@@ -29,8 +26,9 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto me-0">
             <Nav.Link href="/"  className="text-primary_color" >Home</Nav.Link>
-            <Nav.Link href="/about" className="text-primary_color">About</Nav.Link>
+           {/* <Nav.Link href="/about" className="text-primary_color">About</Nav.Link>*/}
             <Nav.Link href="/product" className="text-primary_color"  >Product</Nav.Link>
+            <Nav.Link href="/services" className="text-primary_color"  >Services</Nav.Link>
             <Nav.Link href="/contact" className="text-primary_color" >Contact</Nav.Link>
             </Nav>
          

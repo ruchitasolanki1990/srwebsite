@@ -41,7 +41,8 @@ const Footer = () =>{
             <p className="color-black fs-5 fw-bolder">Menu</p>
             <ul className="list-unstyled">
               <li><a href="/" className="text-secondary_color text-decoration-none">Home</a></li>
-              <li><a href="/about" className="text-secondary_color text-decoration-none">About</a></li>
+              <li><a href="/product" className="text-secondary_color text-decoration-none">Product</a></li>
+              <li><a href="/services" className="text-secondary_color text-decoration-none">Services</a></li>
               <li><a href="/contact" className="text-secondary_color text-decoration-none">Contact</a></li>
             </ul>
           </div>

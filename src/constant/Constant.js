@@ -1,4 +1,11 @@
 export const COMPANY_NAME = "SR TEFCOAT ENGINEERING";
-export const GET_HOME_DETAILS= "homedetails";
-export const GET_CONTACT_DETAILS= "contactdetails";
-export const GET_ABOUT_DETAILS= "aboutdetails";
+export const GET_HOME_DETAILS= "api/homedetails";
+export const GET_CONTACT_DETAILS= "api/contactdetails";
+export const GET_ABOUT_DETAILS= "api/aboutdetails";
+export const IMAGES_UPLOAD="api/images";
+export const IMAGE_Display="uploads/images";
+export const GET_SERVICES_DETAILS="api/servicesdetails";
+export const SERVICES_IMAGE_DISPLAY ="uploads/services";
+export const GET_PRODUCT_DETAILS ="api/productdetails";
+export const IMAGE_PRODUCT_DISPLAY ="uploads/product";
+export const CONTACT_FORM ="api/contactform";

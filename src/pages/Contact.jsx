@@ -4,7 +4,7 @@ import Footer from "../components/FooterComponent/Footer";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getValueByKey } from "../utility/utility";
-import { GET_CONTACT_DETAILS } from "../constant/Constant";
+import { CONTACT_FORM, GET_CONTACT_DETAILS, IMAGES_UPLOAD, IMAGE_Display} from "../constant/Constant";
 import axios from "axios";
 
 const Contact = () =>{
@@ -14,34 +14,67 @@ const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: ""
+    massage: ""
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/${CONTACT_FORM}`, formData);
+    console.log(res);
+    
+    // Check success from backend
+     if (res.status === 201) { // check status instead of res.data.success
+      alert(res.data.message || "Message Sent Successfully!");
+      setFormData({ name: "", email: "", phone: "", massage: "" });
+    } else {
+      alert("Something went wrong. Try again!");
+    }
 
-
+  } catch (err) {
+    console.error("Axios error:", err.response?.data || err.message);
+    alert("Something went wrong. Try again!");
+  }
+};
 //database connectivity for company info
 const [contactdetail, setcontactdetail] = useState([]);
+  const [allImages, setAllImages] = useState([]);
+
+  //  Fetch all rows
+  const fetchData = async () => {
+    try {
+       const [res, res1] = await Promise.all([
+      axios.get(`${process.env.REACT_APP_API_URL}/${GET_CONTACT_DETAILS}`),
+      axios.get(`${process.env.REACT_APP_API_URL}/${IMAGES_UPLOAD}`)
+    ]);
+      setcontactdetail(res.data);
+      setAllImages(res1.data);
+      console.log();
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/${GET_CONTACT_DETAILS}`)
-      .then((res) => {
-        setcontactdetail(res.data); //  Save data into state
-      })
-      .catch((err) => console.error("Error:", err));
+    fetchData();
   }, []);
+  const getValueByKeyImg = (key, data) => {
+  const item = data.find((x) => x.pagekey === key);
+  return item ? item.path : null;
+};
  
+const bgImage = getValueByKeyImg("contactimg", allImages);
+
 
     return(
         <>
         <Header />
-        <div className="imgbackground text-white position:absolute top:150px left:50px">
-            <div className="p-5">
+        <div style={{backgroundImage: `url(${process.env.REACT_APP_API_URL}/${IMAGE_Display}/${bgImage})` }} className="imgbackground text-white position:absolute top:150px left:50px">
+            <div className="banner-conten">
             <h2 className="fw-bold">Contact Us</h2>
             <div>We manufacturer Raises their, hand, we serve</div>
             </div>
@@ -123,13 +156,15 @@ const [contactdetail, setcontactdetail] = useState([]);
                                     </div>
                                     <div className="mb-3">
                                         <label  className="form-label text-primary_color">Message</label>
-                                        <textarea className="form-control" 
-                                        id="message" 
-                                        rows="4" 
-                                        name="massage" 
-                                        value={formData.message} 
-                                        onChange={handleChange} 
-                                        placeholder="Write your message..."></textarea>
+                                        <textarea
+                                        className="form-control"
+                                        id="massage"
+                                        rows="4"
+                                        name="massage"
+                                        value={formData.massage}
+                                        onChange={handleChange}
+                                        placeholder="Write your massage..."
+                                        ></textarea>
                                     </div>
                                     <div className="d-grid">
                                         <button type="submit" className="btn btn-dark text-primary_color">Send Message</button>
